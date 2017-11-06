@@ -1,7 +1,7 @@
 {
   "name": "cas2oauth2bridge",
   "version": "0.1.0",
-  "description": "",
+  "description": "OAuth2 bridge for (UVSQ's) CAS server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,6 @@
   "author": "Luca De Feo",
   "license": "ISC",
   "dependencies": {
-    "oauth2-server": "^3.0.0",
     "passport-saml": "^0.31.0",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
