@@ -1,15 +1,16 @@
 const restify = require('restify');
 const passport = require('passport');
-const OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
+const OAuth2Strategy = require('passport-oauth2');
+
+const host = process.argv[2] || 'http://localhost:8080/';
 
 const strat = new OAuth2Strategy({
-    authorizationURL: 'http://localhost:8080/login',
-    tokenURL: 'http://localhost:8080/token',
+    authorizationURL: host + '/login',
+    tokenURL: host + '/token',
     clientID: '0',
     clientSecret: 'test',
     callbackURL: 'http://localhost:8081/cb',
 }, (accessToken, refreshToken, profile, done) => {
-    console.log(accessToken, refreshToken, profile);
     done(null, profile);
 });
 passport.use('oauth2', strat);
@@ -28,4 +29,5 @@ server.get('/cb', (req, res, next) => {
 
 server.listen(8081, function() {
     console.log('%s listening at %s', server.name, server.url);
+    console.log('OAuth2 server at', host);
 });
