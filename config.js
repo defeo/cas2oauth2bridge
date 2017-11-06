@@ -1,5 +1,5 @@
 module.exports = {
-    appURL: "http://keats.prism.uvsq.fr/oauth2",
+    appURL: "https://keats.prism.uvsq.fr/oauth2",
     port: process.env.PORT || 8080,
     cas: {
 	entryPoint: "https://cas.uvsq.fr/login",
@@ -10,8 +10,11 @@ module.exports = {
 	issuer: "cas2oauth2bridge",
     },
     crypto: {
-	algorithm: "aes-256-cbc-hmac-sha256",
-	secret: "123456",
+	algorithm: "aes-256-gcm",
+	key: new Buffer(process.env.OAUTH_SECRET ||     // Change me!
+			''.padEnd(64, '0'),
+			'hex'),
+	ivlen: 16,
     },
     oauth: {
 	tokenLifetime: 24*60*60,
