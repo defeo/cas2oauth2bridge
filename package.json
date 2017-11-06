@@ -9,6 +9,7 @@
   "author": "Luca De Feo",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "passport-saml": "^0.31.0",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",

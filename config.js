@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
     appURL: "https://keats.prism.uvsq.fr/oauth2",
     port: process.env.PORT || 8080,
