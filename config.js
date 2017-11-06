@@ -12,9 +12,8 @@ module.exports = {
     },
     crypto: {
 	algorithm: "aes-256-gcm",
-	key: new Buffer(process.env.OAUTH_SECRET ||     // Change me!
-			''.padEnd(64, '0'),
-			'hex'),
+	key: process.env.OAUTH_SECRET && new Buffer(process.env.OAUTH_SECRET, 'hex')
+	    || Buffer.alloc(32),
 	ivlen: 16,
     },
     oauth: {

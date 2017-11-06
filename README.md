@@ -13,7 +13,10 @@ Clone, then `npm install`.
 
 ## Configure
 
-Edit `config.js`, in particular set your secret key to secure tokens.
+Edit `config.js`.
+
+If you do not set a secret key to secure tokens, a new random secret
+will be generated at every restart.
 
 ## Run
 
@@ -34,8 +37,6 @@ container. Build an image with
 
 	cd cas2oauth2bridge
 	docker build -t c2o2b .
-
-a random secret key is automatically generated in the container.
 
 Then run the container with
 
