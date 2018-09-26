@@ -10,7 +10,7 @@ module.exports = {
     // The URL where the OAuth2 server will respond
     appURL: "https://example.com/oauth2",
     // The port to bind to
-    port: 8080,
+    port: process.env.PORT || 8080,
 
     // The endpoints of the CAS server (v1.0) to authenticate to
     cas: {
