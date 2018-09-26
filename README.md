@@ -1,11 +1,16 @@
-# CAS to OAuth2 bridge
+# C2O2B: CAS to OAuth2 Bridge
 
-A storage-less OAuth2 server that authentificates to a CAS server
+A storage-less OAuth2 server that authentificates to a Jasig CAS server
 (<https://www.apereo.org/projects/cas>).
 
 ## Why?
 
-Because delegated authentication sucks at [UVSQ](http://www.uvsq.fr/)!
+Because universities deserve better delegated authentication than Jasig!
+
+We use this internally at [UVSQ](http://www.uvsq.fr/) for
+authenticating our students to a
+[JupyterHub](https://jupyterhub.readthedocs.io/en/stable/) server. See
+[here](https://github.com/defeo/jupyterhub-docker/).
 
 ## Install
 
@@ -24,23 +29,20 @@ Type
 
 	npm start
 
-Environment variables `PORT` and `OAUTH_SECRET` can be passed to
-override the settings in `config.js`.
+An environment variable `PORT` can be passed to override the settings
+in `config.js`.
 
-If a `.env` file is present, it is also parsed for environment
-variables.
+## Run with Docker
 
-## Run in Docker
+If you use docker, you can run C2O2B in a container. Pull the official
+image:
 
-A `Dockerfile` is provided to easily set up the server in a
-container. Build an image with
+	docker pull defeo/cas2oauth2bridge
 
-	cd cas2oauth2bridge
-	docker build -t c2o2b .
+Create a `config.js` file with your custom settings and bind-mount it
+in the container:
 
-Then run the container with
+	docker run -d  -p 38080:38080 -v ./config.js:/home/node/config.js defeo/cas2oauth2bridge
 
-	docker run -d -p 38080:38080 c2o2b
-
-Finally, point your webserver to the bind port (`38080` in the
-example).
+and you are all set! Your OAuth2 server is now ready to accept
+connections (on port `38080`).
