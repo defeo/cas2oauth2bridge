@@ -2,7 +2,7 @@ const restify = require('restify');
 const passport = require('passport');
 const OAuth2Strategy = require('passport-oauth2');
 
-const host = process.argv[2] || 'http://localhost:8080/';
+const host = process.argv[2] || 'http://localhost:8080';
 
 const strat = new OAuth2Strategy({
     authorizationURL: host + '/login',
